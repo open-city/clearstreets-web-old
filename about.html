@@ -46,12 +46,16 @@
 			<h2 id="how-does-it-really-work">How did we <i>really</i> do this? (For the geeks)</h2>
 			<p>This app was hacked together with python, php, google fusion tables, javascript, html/css, and a humble batch script. Here's how we did it:</p>
 
-			<p>1. We dug around in the Plow Tracker code and stumbled into the <a href='https://gisapps.cityofchicago.org/ArcGISRest/services/ExternalApps/operational/MapServer/38/query?f=json&where=OBJECTID%20is%20not%20null%20AND%20POSTING_TIME%20%3E%20SYSDATE-1%2F96&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=ADDRESS%2CPOSTING_TIME%2CASSET_NAME%2CASSET_TYPE%2COBJECTID'>data feed of GPS plow locations</a>. We pulled these dots.</p>
+			<ol>
+			<li><p>We dug around in the Plow Tracker code and stumbled into the <a href='https://gisapps.cityofchicago.org/ArcGISRest/services/ExternalApps/operational/MapServer/38/query?f=json&where=OBJECTID%20is%20not%20null%20AND%20POSTING_TIME%20%3E%20SYSDATE-1%2F96&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=ADDRESS%2CPOSTING_TIME%2CASSET_NAME%2CASSET_TYPE%2COBJECTID'>data feed of GPS plow locations</a>. We pulled these dots.</p></li>
 
-			<p>2. In order to figure out which streets had been cleared, we needed to turn these dots into plow paths. Lukas Kabrt's <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">MatchGPX2OSM</a> did the trick. It takes a series of GPS locations and snaps them to the street grid in order to calculate the most likely path taken by the vehicle. The street grid itself was provided by the thousands of unsung heroes at <a href="http://www.openstreetmap.org/">OpenStreetMap</a>.</p>
+			<li><p>In order to figure out which streets had been cleared, we needed to turn these dots into plow paths. Lukas Kabrt's <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">MatchGPX2OSM</a> did the trick. It takes a series of GPS locations and snaps them to the street grid in order to calculate the most likely path taken by the vehicle. The street grid itself was provided by the thousands of unsung heroes at <a href="http://www.openstreetmap.org/">OpenStreetMap</a>. <br /><strong>Code</strong>: <a href="https://github.com/open-city/clearstreets-gpx2osm">ClearStreets GPX to OSM script</a></p></li>
 
-			<p>3. We then wrote a script to import this data into <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">Google Fusion Tables</a>, so we could display it using Derek Eder's <a href="http://derekeder.com/searchable_map_template/">searchable map template</a>. Finally, we styled the template and flipped the switch.</p>
-		<p>We'll post the code on Github later. It will be embarrassing.</p>
+			<li><p>We then wrote a script to import this data into <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">Google Fusion Tables</a>, so we could display it using Derek Eder's <a href="http://derekeder.com/searchable_map_template/">searchable map template</a>. <br /><strong>Code</strong>: <a href="https://github.com/open-city/clearstreets-osm-to-ft">ClearStreets OSM to Fusion Tables script</a></p></li>
+			
+			<li><p>Finally, we styled the template based on Derek's Fusion Tables searchable map and flipped the switch. <br /><strong>Code</strong>: <a href="https://github.com/open-city/clearstreets-web">ClearStreets map front-end</a></p></li>
+
+		</ol>
 		<hr />
 		<p class='mute'>A project by <a href='http://derekeder.com'>Derek Eder</a> and Forest Gregg.</p>
 		</div>
