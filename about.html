@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About - ClearStreets</title>
+	<link href='styles/master.css' media='all' rel='stylesheet' type='text/css' /> 
+	<script src="/source/analytics_lib.js" type="text/javascript"></script>
+	<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+	<div id="page"> 
+		<div class='content-simple'>
+			<div id='title'>
+				<ul id='header-nav'>
+					<li><a href="/clearstreets/">Home</a></li>
+					<li><a href='about.html'>About</a></li>
+				</ul>
+			</div>
+			<a href='/clearstreets/'><img src='images/logo.png' alt='Chicago ClearStreets' /></a>
+			an <a href='http://opencityapps.org'>Open City</a> app
+			<hr />
+			<br>
+			<h2 id="what-is-this">What is this?</h2>
+			<p>A week ago, the City of Chicago released Plow Tracker, an app that tracks the city's snow plows in real time. We want to thank the city for taking this innovative step towards <a href="http://radar.oreilly.com/2011/08/chicago-data-apps-open-government.html">open government</a>. In the <a href="http://gridchicago.com/2012/plow-tracker-not-ready-for-prime-time/#comment-410190320">words of Dan O'Neil</a>, "it exposed city data in a fun and timely way that got people talking about an essential city service." </p>
+			<p><b>We wanted to help make it better</b>, so we took the plows' locations and figured out which streets they're clearing.</p> 
+			<p>However, the urge to make this ClearStreets app only hit us on Thursday evening, 12 hours before the storm descended on our fair city. So this is a rough draft (see disclaimer), but it shows what can be done when the city embraces <a href="http://www.ascentstage.com/archives/2012/01/open-data-in-chicago/">open data</a>. The more data they release, the more useful stuff we can build.</p>
+			<br>
+			
+			<h2>Press</h2>
+			<ul>
+			<li><a href='http://www.chicagotribune.com/news/ct-talk-snow-tracker-0121-20120121,0,4501133.story'>What streets have been plowed, and when? Check the Web</a> - Chicago Tribune</li>
+			<li><a href="http://www.chicagojournal.com/News/01-20-2012/Web_apps_track_snow_plows_progress_around_Chicago">Web apps track snow plows progress around Chicago</a> - Chicago Journal</li>
+			<li><a href='http://gridchicago.com/2012/new-plow-tracker-style-website-hits-the-web-in-time-for-todays-snow-storm/'>New plow tracker-style website hits the web in time for today's snow storm</a> - GridChicago</li>
+			<li><a href='http://chicagoist.com/2012/01/20/clear_streets_a_better_use_of_snow.php#photo-1'>Chicago ClearStreets: A Better Use Of Snow Plow Tracker Technology</a> - Chicagoist</li>
+			</ul>
+			<br>
+			<h2 id="what-data-is">What exactly does the map show?</h2>
+			<p>The dark lines on the map are road segments that plows have driven over since 10am on Friday. That's it. We don't know whether they were salting, plowing, or just passing through. And we don't know for sure whether those streets are currently clear, because we don't have info about road conditions. Roads that were plowed early on might accumulate fresh snow as the storm ginds on.</p>	
+			<br>	
+			<h2 id="dont-sue-us">Disclaimer: data may not be accurate</h2>
+			<p>What's more, we don't guarantee that the dark lines &mdash; which, again, show where plows have passed - are accurate or complete. The plows only transmit their rough locations, and they don't quite do so in real time. We make a best guess about where plows have passed, but it's still just that: a guess, though hopefully a good one. Don't sue us.</p>
+			<br>
+			<h2 id="how-does-it-work">How did we do this?</h2>
+			<p>Each of the city's snow plows is outfitted with a GPS system. When a storm hits, the plows begin transmitting their location to the city in real-time. The city puts this data online and constantly updates it to power their real-time Plow Tracker map.</p> 
+			<p>We took that location data - where was plow x at time y? - and used it to figure out which streets plows have driven through.</p>
+			<br>
+			<h2 id="how-does-it-really-work">How did we <i>really</i> do this? (For the geeks)</h2>
+			<p>This app was hacked together with python, php, google fusion tables, javascript, html/css, and a humble batch script. Here's how we did it:</p>
+
+			<p>1. We dug around in the Plow Tracker code and stumbled into the <a href='https://gisapps.cityofchicago.org/ArcGISRest/services/ExternalApps/operational/MapServer/38/query?f=json&where=OBJECTID%20is%20not%20null%20AND%20POSTING_TIME%20%3E%20SYSDATE-1%2F96&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=ADDRESS%2CPOSTING_TIME%2CASSET_NAME%2CASSET_TYPE%2COBJECTID'>data feed of GPS plow locations</a>. We pulled these dots.</p>
+
+			<p>2. In order to figure out which streets had been cleared, we needed to turn these dots into plow paths. Lukas Kabrt's <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">MatchGPX2OSM</a> did the trick. It takes a series of GPS locations and snaps them to the street grid in order to calculate the most likely path taken by the vehicle. The street grid itself was provided by the thousands of unsung heroes at <a href="http://www.openstreetmap.org/">OpenStreetMap</a>.</p>
+
+			<p>3. We then wrote a script to import this data into <a href="http://wiki.openstreetmap.org/wiki/Routing/Travel_Time_Analysis/MatchGPX2OSM">Google Fusion Tables</a>, so we could display it using Derek Eder's <a href="http://derekeder.com/searchable_map_template/">searchable map template</a>. Finally, we styled the template and flipped the switch.</p>
+		<p>We'll post the code on Github later. It will be embarrassing.</p>
+		<hr />
+		<p class='mute'>A project by <a href='http://derekeder.com'>Derek Eder</a> and Forest Gregg.</p>
+		</div>
+	</div>
+</body>
+</html>

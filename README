@@ -1,0 +1,33 @@
+Chicago ClearStreets
+based on Fusion Table Searchable Map Template by Derek Eder
+
+from http://derekeder.com/clearstreets/
+
+What is this?
+A week ago, the City of Chicago released Plow Tracker, an app that tracks the city's snow plows in real time. We want to thank the city for taking this innovative step towards open government. In the words of Dan O'Neil, "it exposed city data in a fun and timely way that got people talking about an essential city service."
+
+We wanted to help make it better, so we took the plows' locations and figured out which streets they're clearing.
+
+However, the urge to make this ClearStreets app only hit us on Thursday evening, 12 hours before the storm descended on our fair city. So this is a rough draft (see disclaimer), but it shows what can be done when the city embraces open data. The more data they release, the more useful stuff we can build.
+
+What exactly does the map show?
+The dark lines on the map are road segments that plows have driven over since 10am on Friday. That's it. We don't know whether they were salting, plowing, or just passing through. And we don't know for sure whether those streets are currently clear, because we don't have info about road conditions. Roads that were plowed early on might accumulate fresh snow as the storm ginds on.
+
+Disclaimer: data may not be accurate
+What's more, we don't guarantee that the dark lines — which, again, show where plows have passed - are accurate or complete. The plows only transmit their rough locations, and they don't quite do so in real time. We make a best guess about where plows have passed, but it's still just that: a guess, though hopefully a good one. Don't sue us.
+
+How did we do this?
+Each of the city's snow plows is outfitted with a GPS system. When a storm hits, the plows begin transmitting their location to the city in real-time. The city puts this data online and constantly updates it to power their real-time Plow Tracker map.
+
+We took that location data - where was plow x at time y? - and used it to figure out which streets plows have driven through.
+
+How did we really do this? (For the geeks)
+This app was hacked together with python, php, google fusion tables, javascript, html/css, and a humble batch script. Here's how we did it:
+
+1. We dug around in the Plow Tracker code and stumbled into the data feed of GPS plow locations. We pulled these dots.
+
+2. In order to figure out which streets had been cleared, we needed to turn these dots into plow paths. Lukas Kabrt's MatchGPX2OSM did the trick. It takes a series of GPS locations and snaps them to the street grid in order to calculate the most likely path taken by the vehicle. The street grid itself was provided by the thousands of unsung heroes at OpenStreetMap.
+
+3. We then wrote a script to import this data into Google Fusion Tables, so we could display it using Derek Eder's searchable map template. Finally, we styled the template and flipped the switch.
+
+We'll post the code on Github later. It will be embarrassing.
