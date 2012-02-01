@@ -3,6 +3,14 @@ based on Fusion Table Searchable Map Template by Derek Eder
 
 from http://derekeder.com/clearstreets/about.html
 
+overview
+ClearStreets is built with several different scripts. They work in the following order:
+1. Plow Tracker site is scraped and data is saved locally
+2. Point data is converted in to GPX format
+3. GPX data is 'snapped to grid' for city streets and converted to OSM (Open Street Maps)
+4. OSM data is converted in to KML and uploaded to Google Fusion Tables
+5. *this codebase* Fusion Table data is read by a front end site and shown on a map (http://derekeder.com/clearstreets/)
+
 What is this?
 On Jan 3rd 2012, the City of Chicago released Plow Tracker, an app that tracks the city's snow plows in real time. We want to thank the city for taking this innovative step towards open government. In the words of Dan O'Neil, "it exposed city data in a fun and timely way that got people talking about an essential city service."
 
