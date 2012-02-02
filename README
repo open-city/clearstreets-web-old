@@ -37,5 +37,3 @@ This app was hacked together with python, php, google fusion tables, javascript,
 2. In order to figure out which streets had been cleared, we needed to turn these dots into plow paths. Lukas Kabrt's MatchGPX2OSM did the trick. It takes a series of GPS locations and snaps them to the street grid in order to calculate the most likely path taken by the vehicle. The street grid itself was provided by the thousands of unsung heroes at OpenStreetMap.
 
 3. We then wrote a script to import this data into Google Fusion Tables, so we could display it using Derek Eder's searchable map template. Finally, we styled the template and flipped the switch.
-
-We'll post the code on Github later. It will be embarrassing.
