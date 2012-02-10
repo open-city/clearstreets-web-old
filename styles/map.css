@@ -92,8 +92,10 @@ ul.c2l, ul.c2r { list-style: none; margin-left: 0; }
 .content-home h1 { width: 100%; }
 .home-left { float: left; width: 180px; padding: 0 5px; }
 .home-right { float: right; width: 500px; }
-.content-simple { margin: auto; width: 700px; } 
-.content-simple  p { margin-top: .25em; }
+
+.content-simple { margin: auto; width: 800px; padding-bottom: 20px; } 
+.content-simple  p { margin-top: .25em; font-size: 15px; }
+.content-simple li { font-size: 15px; margin-left: 25px; }
 
 	/* Full layout (no secondary content) */
 	.full .content { background-image: none; }
