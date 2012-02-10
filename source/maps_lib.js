@@ -203,6 +203,33 @@
 		  $( "#lastUpdated" ).fadeIn();
 	  }
 	}
+	
+	function getActivePlows() {
+	 var startTime = new Date();
+	 startTime.setTime(startTime.getTime() + (-60 * 60 * 1000)); 
+		//set the query using the parameter
+	  var searchStr = "SELECT 'Plow ID' FROM " + fusionTableId + " WHERE Datestamp >= '" + $.format.date(new Date(startTime), "MMM dd, yyyy h:mm a") + "' GROUP BY 'Plow ID'";
+	  
+	  console.log(searchStr);
+	  //set the callback function
+	  getFTQuery(searchStr).send(displayActivePlows);
+	
+	}
+	
+	function displayActivePlows(response) {
+	  var plowCount = "";
+	  if (response.getDataTable().getNumberOfRows() > 0)
+	  {
+	   //console.log(plowCount);
+	  	  plowCount = response.getDataTable().getNumberOfRows();
+		  //alert(date);
+		  $( "#activePlows" ).fadeOut(function() {
+	        $( "#activePlows" ).html("Active plows in the last hour: " + plowCount);
+	      });
+		  $( "#activePlows" ).fadeIn();
+	  }
+	}
+	
 
 	function displaySearchCount(response) {
 	  var numRows = 0;
