@@ -42,7 +42,7 @@
 	
 	searchrecords = null;
 	$("#txtSearchAddress").val("");
-	$("#txtStartTime").val("02/10/2012 10:00 AM");
+	$("#txtStartTime").val("02/10/2012 6:00 AM");
 	//$("#txtEndTime").val("02/11/2012 6:00 PM");
 	$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
@@ -91,10 +91,6 @@
 				searchrecords = new google.maps.FusionTablesLayer(fusionTableId, {
 					query: searchStr}
 					);
-					
-				searchrecords2 = new google.maps.FusionTablesLayer(fusionTableId2, {
-					query: searchStr.replace(fusionTableId+"",fusionTableId2+"")}
-					);
 			
 				searchrecords.setMap(map);
 				//displayCount(searchStr);
@@ -121,8 +117,6 @@
 	function clearSearch() {
 		if (searchrecords != null)
 			searchrecords.setMap(null);
-		if (searchrecords2 != null)
-			searchrecords2.setMap(null);	
 		if (addrMarker != null)
 			addrMarker.setMap(null);	
 		if (searchRadiusCircle != null)
