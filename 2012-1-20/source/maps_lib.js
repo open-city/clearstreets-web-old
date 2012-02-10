@@ -8,20 +8,19 @@
   var addrMarker;
   var addrMarkerImage = 'http://derekeder.com/images/icons/blue-pushpin.png';
   
-  //1-20-2012 storm
-  //var fusionTableId = 2708605; //replace this with the ID of your fusion table
-  //var fusionTableId2 = 2706169;
-  
-  //2-9-2012
-  var fusionTableId = 2895707; //replace this with the ID of your fusion table
+  var fusionTableId = 2708605; //replace this with the ID of your fusion table
+  var fusionTableId2 = 2706169;
   
   var searchRadius = 1610; //in meters ~ 1/2 mile
   var recordName = "road segment";
   var recordNamePlural = "road segments";
   var searchrecords;
+  var searchrecords2;
   var records = new google.maps.FusionTablesLayer(fusionTableId);
+  var records2 = new google.maps.FusionTablesLayer(fusionTableId2);
   
   var searchStr;
+  var searchStr2;
   var searchRadiusCircle;
   
   google.load('visualization', '1', {}); //used for custom SQL call to get count
@@ -42,9 +41,9 @@
 	
 	searchrecords = null;
 	$("#txtSearchAddress").val("");
-	$("#txtStartTime").val("02/10/2012 10:00 AM");
-	//$("#txtEndTime").val("02/11/2012 6:00 PM");
-	$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
+	$("#txtStartTime").val("01/20/2012 10:00 AM");
+	$("#txtEndTime").val("01/21/2012 6:00 PM");
+	//$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
   }
 	
@@ -97,6 +96,7 @@
 					);
 			
 				searchrecords.setMap(map);
+				searchrecords2.setMap(map);
 				//displayCount(searchStr);
 			  } 
 			  else 
@@ -112,8 +112,12 @@
 			searchrecords = new google.maps.FusionTablesLayer(fusionTableId, {
 				query: searchStr}
 				);
+			searchrecords2 = new google.maps.FusionTablesLayer(fusionTableId2, {
+				query: searchStr.replace(fusionTableId+"",fusionTableId2+"")}
+				);
 		
 			searchrecords.setMap(map);
+			searchrecords2.setMap(map);
 			//displayCount(searchStr);
 		}
   	}
