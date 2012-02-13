@@ -9,7 +9,7 @@
   var addrMarkerImage = 'http://derekeder.com/images/icons/blue-pushpin.png';
   
   var fusionTableId = 2708605; //replace this with the ID of your fusion table
-  var fusionTableId2 = 2706169;
+  var fusionTableId2 = 2706169; //under chicagoplowtracker2@gmail.com
   
   var searchRadius = 1610; //in meters ~ 1/2 mile
   var recordName = "road segment";
