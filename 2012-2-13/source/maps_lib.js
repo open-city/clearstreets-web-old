@@ -8,6 +8,11 @@
   var addrMarker;
   var addrMarkerImage = 'http://derekeder.com/images/icons/blue-pushpin.png';
   
+  //1-20-2012 storm
+  //var fusionTableId = 2708605; //replace this with the ID of your fusion table
+  //var fusionTableId2 = 2706169;
+  
+  //2-9-2012
   var fusionTableId = 2928103; //replace this with the ID of your fusion table
   
   var searchRadius = 1610; //in meters ~ 1/2 mile
@@ -37,9 +42,9 @@
 	
 	searchrecords = null;
 	$("#txtSearchAddress").val("");
-	$("#txtStartTime").val("02/23/2012 10:00 AM");
-	//$("#txtEndTime").val("02/14/2012 1:00 PM");
-	$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
+	$("#txtStartTime").val("02/13/2012 2:00 PM");
+	$("#txtEndTime").val("02/14/2012 1:00 PM");
+	//$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
   }
 	
