@@ -38,8 +38,8 @@
 	searchrecords = null;
 	$("#txtSearchAddress").val("");
 	$("#txtStartTime").val("02/24/2012 2:00 AM");
-	//$("#txtEndTime").val("02/14/2012 1:00 PM");
-	$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
+	$("#txtEndTime").val("02/24/2012 3:00 PM");
+	//$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
   }
 	
