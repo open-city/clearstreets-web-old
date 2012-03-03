@@ -37,9 +37,9 @@
 	
 	searchrecords = null;
 	$("#txtSearchAddress").val("");
-	$("#txtStartTime").val("02/24/2012 2:00 AM");
-	$("#txtEndTime").val("02/24/2012 3:00 PM");
-	//$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
+	$("#txtStartTime").val("03/2/2012 8:00 PM");
+	//$("#txtEndTime").val("02/24/2012 3:00 PM");
+	$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
   }
 	
