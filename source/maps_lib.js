@@ -27,9 +27,18 @@
   	geocoder = new google.maps.Geocoder();
     var chicago = new google.maps.LatLng(41.8781136, -87.66677856445312);
     var myOptions = {
-      zoom: 13,
-      center: chicago,
-      mapTypeId: google.maps.MapTypeId.TERRAIN
+	zoom: 12,
+	maxzoom: 18,
+	center: chicago,
+	mapTypeId: google.maps.MapTypeId.ROADMAP,
+	styles: [
+       {
+         stylers: [
+           { saturation: -100 },
+           { lightness: 40 }
+         ]
+       }
+	]
     };
     map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	
@@ -41,6 +50,15 @@
 	$("#txtEndTime").val("03/3/2012 6:00 AM");
 	//$("#txtEndTime").val($.format.date(new Date(), "MM/dd/yyyy h:mm a"));
 	doSearch();
+      
+      var weatherLayer = new google.maps.weather.WeatherLayer({
+	  temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT,
+	  clickable: false,
+      })
+      weatherLayer.setMap(map);
+
+      var cloudLayer = new google.maps.weather.CloudLayer();
+      cloudLayer.setMap(map);
   }
 	
 	function doSearch() 
